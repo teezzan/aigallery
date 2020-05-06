@@ -17,7 +17,7 @@ var AuthController = require(__root + 'auth/AuthController');
 app.use('/api/auth', AuthController);
 
 
-// var GroupController = require(__root + 'group/GroupController');
-// app.use('/api/group', GroupController);
+var ArtController = require(__root + 'artwork/ArtController');
+app.use('/api/artwork', ArtController);
 
 module.exports = app;

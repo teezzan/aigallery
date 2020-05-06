@@ -5,7 +5,7 @@ var UserSchema = new mongoose.Schema({
   password: String,
   verified : { type: Boolean, default: false },
   orders : Array,//of objects
-  shippingAddress : Object,
+  shippingAddress : String,
   resetPasswordToken : String,
   resetPasswordExpires : { type: Date, default: Date.now }
 });
