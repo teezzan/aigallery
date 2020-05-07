@@ -4,6 +4,7 @@ var UserSchema = new mongoose.Schema({
   email: { type: String, unique: true },
   password: String,
   verified : { type: Boolean, default: false },
+  likes: Array,
   orders : Array,//of objects
   shippingAddress : String,
   resetPasswordToken : String,
