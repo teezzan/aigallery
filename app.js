@@ -7,7 +7,7 @@ global.__root   = __dirname + '/';
 // // Middlewares
 // app.use(express.json());
 // app.set("view engine", "ejs");
-
+// testing termux
 
 app.get('/api', function (req, res) {
   res.status(200).send('API works.');
