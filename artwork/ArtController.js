@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
-
+var cors = require('cors');
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 var User = require('../user/User');
@@ -58,7 +58,7 @@ const upload = multer({
 
 
 //vanilla upload or not 
-router.post("/upload", upload.single("file"), (req, res) => {
+router.post("/upload", cors(), upload.single("file"), (req, res) => {
 
     // console.log(req);
     var file_info = {
@@ -79,7 +79,7 @@ router.post("/upload", upload.single("file"), (req, res) => {
 });
 
 //Vanilla for getting and downloading from common repo 
-router.get("/media/:filename", //cors(),// VerifyToken, 
+router.get("/media/:filename", cors(),// VerifyToken, 
     (req, res) => {
         const file = gfs
             .find({
@@ -94,6 +94,11 @@ router.get("/media/:filename", //cors(),// VerifyToken,
                 gfs.openDownloadStreamByName(req.params.filename).pipe(res);
             });
     });
+
+
+router.get("/wakeup", cors(), (req, res) => {
+    res.status(200).send("Awake.")
+})
 
 
 router.get("/media", (req, res) => {
